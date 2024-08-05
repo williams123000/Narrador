@@ -1,8 +1,26 @@
 import random
 import logging
+import datetime
+import os
 
-# Configuración de los logs para guardar la información en un archivo de texto 
-logging.basicConfig(filename='Narrator.log', filemode='w', level=logging.DEBUG, format='%(asctime)s - %(message)s', encoding='utf-8')
+# Crear el directorio de logs si no existe
+log_directory = 'logs'
+os.makedirs(log_directory, exist_ok=True)
+
+# Generar un nombre de archivo único basado en la fecha y hora actuales
+log_filename = os.path.join(log_directory, datetime.datetime.now().strftime("Narrator_%Y%m%d_%H%M%S.log"))
+
+# Configuración de los logs para guardar la información en un archivo de texto
+logging.basicConfig(
+    filename=log_filename,
+    filemode='w',
+    level=logging.DEBUG,
+    format='%(asctime)s - %(message)s',
+    encoding='utf-8'
+)
+
+
+
 logging.info("Inicio de la ejecución del programa Narrator.py")
 logging.info("Programa escrito por Williams Chan Pescador")
 
@@ -67,9 +85,7 @@ def Select_Character():
 
 CharacterPrincipal = Select_Character()
 
-def Create_Goals(CharacterPrincipal):
-    logging.info("Se inicia el proceso de creación de metas")
-    
+def Create_Goals(CharacterPrincipal):    
     Plan_Pre = [
         StoryAction(
             "Caminar hacia el inicio del pasillo", 
@@ -170,9 +186,9 @@ logging.info(f"Personaje principal: {CharacterPrincipal.name}")
 logging.info(f"Meta actual: {Goal_Current.name}")
 
 def Check_Preconditions(preconditions, CharacterPrincipal):
-    logging.info("Se inicia la verificación de precondiciones")
-    logging.info(f"El personaje debe estar en: {preconditions}")
-    logging.info(f"Ubicación actual del personaje: {CharacterPrincipal.location}")
+    logging.info("\tSe inicia la verificación de precondiciones")
+    logging.info(f"\t\tEl personaje debe estar en: {preconditions}")
+    logging.info(f"\t\tUbicación actual del personaje: {CharacterPrincipal.location}")
     return CharacterPrincipal.location in preconditions
 
 def Execute_Plan(Goal_Current, CharacterPrincipal):
@@ -186,7 +202,7 @@ def Execute_Plan(Goal_Current, CharacterPrincipal):
     for action in plan:
         if Check_Preconditions(action.preconditions, CharacterPrincipal):
             description = random.choice(action.descriptions)
-            logging.info(f"Ejecutando acción: {action.name}")
+            logging.info(f"\t\tEjecutando acción: {action.name}")
             logging.info(f"{CharacterPrincipal.name} se encuentra {CharacterPrincipal.conditionsafety}.")
             CharacterPrincipal.location = action.postconditions[0]
             
