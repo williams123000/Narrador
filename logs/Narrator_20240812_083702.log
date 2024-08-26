@@ -1,0 +1,43 @@
+2024-08-12 08:37:02,976 - Inicio de la ejecución del programa Narrator.py
+2024-08-12 08:37:02,976 - Programa escrito por Williams Chan Pescador
+2024-08-12 08:37:02,976 - Se inicia el proceso de selección del personaje principal
+2024-08-12 08:37:14,348 - 	 Estructura del personaje Williams:
+2024-08-12 08:37:14,348 - 		 Nombre: Williams
+2024-08-12 08:37:14,348 - 		 Ubicación: Recamara
+2024-08-12 08:37:14,348 - 		 Estado de seguridad: Inseguro
+2024-08-12 08:37:14,348 - Se crean las metas
+2024-08-12 08:37:14,348 - Meta Pre: Mover al personaje a adentro del baño
+2024-08-12 08:37:14,348 - Meta Find_Keys: Encontrar las llaves en el baño
+2024-08-12 08:37:14,348 - Meta End: Bloquear la puerta del baño para estar a salvo
+2024-08-12 08:37:29,744 - Se inicia la narración de la historia
+2024-08-12 08:37:29,744 - Personaje principal: Williams
+2024-08-12 08:37:29,744 - Meta actual: Mover al personaje a adentro del baño
+2024-08-12 08:37:29,744 - Ejecutando el plan para la meta: Mover al personaje a adentro del baño
+2024-08-12 08:37:29,744 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:37:29,744 - 		Ejecutando acción: Caminar hacia el inicio del pasillo
+2024-08-12 08:37:29,744 - Williams se encuentra Inseguro.
+2024-08-12 08:37:29,744 - Williams avanza cautelosamente hacia el inicio del pasillo,
+2024-08-12 08:37:29,744 - Williams ahora está en Inicio del pasillo
+2024-08-12 08:37:29,744 - 	 Estructura del personaje Williams:
+2024-08-12 08:37:29,744 - 		 Nombre: Williams
+2024-08-12 08:37:29,744 - 		 Ubicación: Inicio del pasillo
+2024-08-12 08:37:29,744 - 		 Estado de seguridad: Inseguro
+2024-08-12 08:37:29,744 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:37:29,744 - 		Ejecutando acción: Caminar hacia el final del pasillo
+2024-08-12 08:37:29,744 - Williams se encuentra Inseguro.
+2024-08-12 08:37:29,744 - intenta avanzar hacia el final del pasillo, pero siente miedo,
+2024-08-12 08:37:29,744 - Williams ahora está en Final del pasillo
+2024-08-12 08:37:29,744 - 	 Estructura del personaje Williams:
+2024-08-12 08:37:29,744 - 		 Nombre: Williams
+2024-08-12 08:37:29,744 - 		 Ubicación: Final del pasillo
+2024-08-12 08:37:29,744 - 		 Estado de seguridad: Inseguro
+2024-08-12 08:37:29,744 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:37:29,744 - 		Ejecutando acción: Entrar al baño
+2024-08-12 08:37:29,744 - Williams se encuentra Inseguro.
+2024-08-12 08:37:29,744 - con cuidado, abre la puerta del baño y entra,
+2024-08-12 08:37:29,744 - Williams ahora está en Baño
+2024-08-12 08:37:29,744 - 	 Estructura del personaje Williams:
+2024-08-12 08:37:29,744 - 		 Nombre: Williams
+2024-08-12 08:37:29,744 - 		 Ubicación: Baño
+2024-08-12 08:37:29,744 - 		 Estado de seguridad: Inseguro
+2024-08-12 08:37:29,744 - Meta alcanzada: Mover al personaje a adentro del baño

@@ -19,7 +19,6 @@ logging.basicConfig(
     encoding='utf-8'
 )
 
-
 logging.info("Inicio de la ejecución del programa Narrator.py")
 logging.info("Programa escrito por Williams Chan Pescador")
 
@@ -97,8 +96,7 @@ def Create_Goals(CharacterPrincipal):
             f"{CharacterPrincipal.name} siente miedo y decide avanzar hacia el inicio del pasillo,",
             f"{CharacterPrincipal.name} avanza con rapidez hacia el inicio del pasillo,",
             f"{CharacterPrincipal.name} escucha ruidos extraños en la recámara, y decide avanzar hacia el inicio del pasillo,",
-            f"{CharacterPrincipal.name} se siente inseguro en la recámara, y decide avanzar hacia el inicio del pasillo,",
-            ]
+            f"{CharacterPrincipal.name} se siente inseguro, y decide avanzar hacia el inicio del pasillo,"]
         ),
         StoryAction(
             "Caminar hacia el final del pasillo", 
@@ -126,7 +124,7 @@ def Create_Goals(CharacterPrincipal):
             "Bloquear la puerta del baño", 
             CharacterPrincipal, 
             ["Baño"], 
-            ["Baño"],
+            ["Baño","A salvo"],  
             ["bloquea la puerta del baño, asegurando su seguridad.", 
             "asegura la puerta del baño con un movimiento decidido.",
             "bloquea la puerta del baño para estar a salvo.",
@@ -163,9 +161,10 @@ new_actions = [
         ["Recamara"],
         [f"{CharacterPrincipal.name} avanza hacia la recámara,",
         f"{CharacterPrincipal.name} se dirige hacia la recámara,",
-        f"{CharacterPrincipal.name} se regresa a la recamára,",
+        f"{CharacterPrincipal.name} se regresa a la recámara,",
         f"{CharacterPrincipal.name} se siente tranquilo en la recámara,"]
-    )
+    ),
+    # Más acciones alternativas en caso de que no se cumplan las precondiciones de las acciones principales
 ]
 
 def Select_Goal(Dict_Goals):
@@ -192,34 +191,47 @@ logging.info(f"Meta actual: {Goal_Current.name}")
 
 def Check_Preconditions(preconditions, CharacterPrincipal):
     logging.info("\tSe inicia la verificación de precondiciones")
-    #logging.info(f"\t\tIntentando verificar si el personaje {CharacterPrincipal.name} cumple con las precondiciones {preconditions}")  
-    #logging.info(f"\t\tEl personaje debe estar en: {preconditions}")
     logging.info(f"\t\tUbicación actual del personaje: {CharacterPrincipal.location}")
     return CharacterPrincipal.location in preconditions
 
-def Execute_Plan(Goal_Current, CharacterPrincipal):
+def is_goal_achieved(goal, character):
+    # Verificar si la meta de bloquear la puerta del baño se ha alcanzado
+    if goal.name == "Bloquear la puerta del baño para estar a salvo" and character.location == "Baño" and character.conditionsafety == "A salvo":
+        return True
+    # Verificar si la meta de moverse al baño se ha alcanzado
+    elif goal.name == "Mover al personaje a adentro del baño" and character.location == "Baño":
+        return True
+    return False
 
-    # Verificar si la meta actual tiene precondiciones para ejecutar un plan previo antes de ejecutar el plan principal 
+def update_safety_status(character, action):
+    if character.location == "Baño" and character.conditionsafety != "A salvo" and action.name == "Bloquear la puerta del baño":
+        character.conditionsafety = "A salvo"
+        logging.info(f"{character.name} ahora está a salvo.")
+
+
+def Execute_Plan(Goal_Current, CharacterPrincipal):
+    # Verificar si hay precondiciones para la meta actual y ejecutar la meta previa si es necesario
     if Goal_Current.preconditions:
         logging.info(f"Verificando precondiciones para la meta: {Goal_Current.name}")
-        # Verificar si se cumplen las precondiciones de la meta actual
+        # Verificar si se cumplen las precondiciones de la meta actual y ejecutar la meta previa si no se cumplen las precondiciones 
         if not Check_Preconditions(Goal_Current.preconditions.plan[0].postconditions, CharacterPrincipal):
-            logging.info(f"Ejecutando plan de la meta: {Goal_Current.preconditions.name}")
-            Execute_Plan(Dict_Goals["Goal_Pre"], CharacterPrincipal)
+            logging.info(f"Las precondiciones para la meta {Goal_Current.name} no se cumplen.")
+            logging.info(f"Ejecutando la meta previa: {Goal_Current.preconditions.name}")
+            Execute_Plan(Goal_Current.preconditions, CharacterPrincipal)
     
+    logging.info(f"Ejecutando el plan para la meta: {Goal_Current.name}")
     plan = Goal_Current.plan
     for action in plan:
         if Check_Preconditions(action.preconditions, CharacterPrincipal):
             description = random.choice(action.descriptions)
             logging.info(f"\t\tEjecutando acción: {action.name}")
             logging.info(f"{CharacterPrincipal.name} se encuentra {CharacterPrincipal.conditionsafety}.")
-            CharacterPrincipal.location = action.postconditions[0] # Actualizar la ubicación del personaje principal con la postcondición 
-            
-            if action.name == "Bloquear la puerta del baño":
-                CharacterPrincipal.conditionsafety = "A salvo"
+            CharacterPrincipal.location = action.postconditions[0]
             print(description)
-            #logging.info(description)
+            logging.info(description)
             logging.info(f"{CharacterPrincipal.name} ahora está en {CharacterPrincipal.location}")
+
+            update_safety_status(CharacterPrincipal, action) # Actualizar el estado de seguridad del personaje
         else:
             logging.info(f"No se puede ejecutar la acción: {action.name} debido a precondiciones no cumplidas.")
             for new_action in new_actions:
@@ -230,13 +242,13 @@ def Execute_Plan(Goal_Current, CharacterPrincipal):
                     logging.info(f"{CharacterPrincipal.name} se encuentra {CharacterPrincipal.conditionsafety}.")
                     CharacterPrincipal.location = new_action.postconditions[0]
                     print(description)
-                    #logging.info(description)
+                    logging.info(description)
                     logging.info(f"{CharacterPrincipal.name} ahora está en {CharacterPrincipal.location}")
                     logging.info(f"\t Estructura del personaje {CharacterPrincipal.name}:")
                     logging.info(f"\t\t Nombre: {CharacterPrincipal.name}")
                     logging.info(f"\t\t Ubicación: {CharacterPrincipal.location}")
                     logging.info(f"\t\t Estado de seguridad: {CharacterPrincipal.conditionsafety}")
-                    Execute_Plan(Goal_Current, CharacterPrincipal)
+                    Execute_Plan(Goal_Current, CharacterPrincipal) # Llamar recursivamente a la función para continuar con el plan de la meta actual
                     return
             return
         logging.info(f"\t Estructura del personaje {CharacterPrincipal.name}:")
@@ -244,13 +256,14 @@ def Execute_Plan(Goal_Current, CharacterPrincipal):
         logging.info(f"\t\t Ubicación: {CharacterPrincipal.location}")
         logging.info(f"\t\t Estado de seguridad: {CharacterPrincipal.conditionsafety}")
 
-    if Goal_Current.name == "Bloquear la puerta del baño para estar a salvo":
-        if CharacterPrincipal.location == "Baño":
-            print("Fin de la historia")
-            logging.info(f"{CharacterPrincipal.name} se encuentra a salvo.")
-            logging.info("Fin de la historia")
-        else:
-            print(f"{CharacterPrincipal.name} no está en el baño para bloquear la puerta.")
-            logging.info(f"{CharacterPrincipal.name} no está en el baño para bloquear la puerta.")
+    # Verificar si la meta se ha alcanzado
+    if is_goal_achieved(Goal_Current, CharacterPrincipal):
+        #print("Fin de la historia")
+        logging.info(f"Meta alcanzada: {Goal_Current.name}")
+        #logging.info("Fin de la historia")
+    else:
+        print(f"{CharacterPrincipal.name} no ha alcanzado la meta.")
+        logging.info(f"{CharacterPrincipal.name} no ha alcanzado la meta.")
+
 
 Execute_Plan(Goal_Current, CharacterPrincipal)

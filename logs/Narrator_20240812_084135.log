@@ -1,0 +1,66 @@
+2024-08-12 08:41:35,082 - Inicio de la ejecución del programa Narrator.py
+2024-08-12 08:41:35,082 - Programa escrito por Williams Chan Pescador
+2024-08-12 08:41:35,082 - Se inicia el proceso de selección del personaje principal
+2024-08-12 08:41:39,672 - 	 Estructura del personaje Williams:
+2024-08-12 08:41:39,672 - 		 Nombre: Williams
+2024-08-12 08:41:39,672 - 		 Ubicación: Recamara
+2024-08-12 08:41:39,672 - 		 Estado de seguridad: Inseguro
+2024-08-12 08:41:39,672 - Se crean las metas
+2024-08-12 08:41:39,672 - Meta Pre: Mover al personaje a adentro del baño
+2024-08-12 08:41:39,672 - Meta Find_Keys: Encontrar las llaves en el baño
+2024-08-12 08:41:39,672 - Meta End: Bloquear la puerta del baño para estar a salvo
+2024-08-12 08:41:40,723 - Se inicia la narración de la historia
+2024-08-12 08:41:40,723 - Personaje principal: Williams
+2024-08-12 08:41:40,723 - Meta actual: Bloquear la puerta del baño para estar a salvo
+2024-08-12 08:41:40,723 - Verificando precondiciones para la meta: Bloquear la puerta del baño para estar a salvo
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - Las precondiciones para la meta Bloquear la puerta del baño para estar a salvo no se cumplen.
+2024-08-12 08:41:40,723 - Ejecutando la meta previa: Encontrar las llaves en el baño
+2024-08-12 08:41:40,723 - Verificando precondiciones para la meta: Encontrar las llaves en el baño
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - Las precondiciones para la meta Encontrar las llaves en el baño no se cumplen.
+2024-08-12 08:41:40,723 - Ejecutando la meta previa: Mover al personaje a adentro del baño
+2024-08-12 08:41:40,723 - Ejecutando el plan para la meta: Mover al personaje a adentro del baño
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - 		Ejecutando acción: Caminar hacia el inicio del pasillo
+2024-08-12 08:41:40,723 - Williams se encuentra Inseguro.
+2024-08-12 08:41:40,723 - Williams con paso firme, se dirige al inicio del pasillo,
+2024-08-12 08:41:40,723 - Williams ahora está en Inicio del pasillo
+2024-08-12 08:41:40,723 - 	 Estructura del personaje Williams:
+2024-08-12 08:41:40,723 - 		 Nombre: Williams
+2024-08-12 08:41:40,723 - 		 Ubicación: Inicio del pasillo
+2024-08-12 08:41:40,723 - 		 Estado de seguridad: Inseguro
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - 		Ejecutando acción: Caminar hacia el final del pasillo
+2024-08-12 08:41:40,723 - Williams se encuentra Inseguro.
+2024-08-12 08:41:40,723 - intenta avanzar hacia el final del pasillo, pero siente miedo,
+2024-08-12 08:41:40,723 - Williams ahora está en Final del pasillo
+2024-08-12 08:41:40,723 - 	 Estructura del personaje Williams:
+2024-08-12 08:41:40,723 - 		 Nombre: Williams
+2024-08-12 08:41:40,723 - 		 Ubicación: Final del pasillo
+2024-08-12 08:41:40,723 - 		 Estado de seguridad: Inseguro
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - 		Ejecutando acción: Entrar al baño
+2024-08-12 08:41:40,723 - Williams se encuentra Inseguro.
+2024-08-12 08:41:40,723 - con decisión, entra en el baño,
+2024-08-12 08:41:40,723 - Williams ahora está en Baño
+2024-08-12 08:41:40,723 - 	 Estructura del personaje Williams:
+2024-08-12 08:41:40,723 - 		 Nombre: Williams
+2024-08-12 08:41:40,723 - 		 Ubicación: Baño
+2024-08-12 08:41:40,723 - 		 Estado de seguridad: Inseguro
+2024-08-12 08:41:40,723 - Meta alcanzada: Mover al personaje a adentro del baño
+2024-08-12 08:41:40,723 - Ejecutando el plan para la meta: Encontrar las llaves en el baño
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - 		Ejecutando acción: Buscar llaves pero no encuentra ninguna
+2024-08-12 08:41:40,723 - Williams se encuentra Inseguro.
+2024-08-12 08:41:40,723 - Williams busca por todo el baño pero no encuentra las llaves.
+2024-08-12 08:41:40,723 - Williams ahora está en Inseguro
+2024-08-12 08:41:40,723 - No se pueden ejecutar más acciones, ya que no se encontraron las llaves.
+2024-08-12 08:41:40,723 - Ejecutando el plan para la meta: Bloquear la puerta del baño para estar a salvo
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - No se puede ejecutar la acción: Bloquear la puerta del baño debido a precondiciones no cumplidas.
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
+2024-08-12 08:41:40,723 - 	Se inicia la verificación de precondiciones
